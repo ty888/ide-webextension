@@ -29,7 +29,7 @@ module.exports = {
   ignorePatterns: [
     '*.min.*',
     'CHANGELOG.md',
-    'dist',
+    'dists',
     'LICENSE*',
     'output',
     'coverage',

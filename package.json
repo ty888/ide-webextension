@@ -1,8 +1,8 @@
 {
-  "name": "vite-react-webext",
-  "displayName": "Vite React WebExt",
+  "name": "ide-webextension",
+  "displayName": "ide-webextension",
   "version": "0.0.1",
-  "description": "[description]",
+  "description": "帮助 IDE平台开发、业务开发。工具级",
   "packageManager": "yarn@3.2.0",
   "private": true,
   "scripts": {
@@ -21,10 +21,12 @@
     "pack:xpi": "cross-env WEB_EXT_ARTIFACTS_DIR=./ web-ext build --source-dir ./extension --filename extension.xpi --overwrite-dest",
     "start:chromium": "web-ext run --source-dir ./extension --target=chromium",
     "start:firefox": "web-ext run --source-dir ./extension --target=firefox-desktop",
-    "clear": "rimraf extension/dist extension/manifest.json 'extension.*'",
+    "clear": "rimraf extension/dists extension/manifest.json 'extension.*'",
     "lint": "eslint --ignore-path .gitignore './**/*.{ts,tsx,js,jsx}'"
   },
   "dependencies": {
+    "@vitejs/plugin-vue": "^5.1.1",
+    "antd": "^5.19.4",
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
   },

@@ -15,31 +15,31 @@ export async function getManifest() {
     version: pkg.version,
     description: pkg.description,
     browser_action: {
-      default_icon: './assets/icon-512.png',
-      default_popup: './dist/popup/index.html',
+      default_icon: './assets/icon128.png',
+      default_popup: './dists/popup/index.html',
     },
     options_ui: {
-      page: './dist/options/index.html',
+      page: './dists/options/index.html',
       open_in_tab: true,
       chrome_style: false,
     },
     background: {
-      page: './dist/background/index.html',
+      page: './dists/background/index.html',
       persistent: false,
     },
     icons: {
-      16: './assets/icon-512.png',
-      48: './assets/icon-512.png',
-      128: './assets/icon-512.png',
+      16: './assets/icon16.png',
+      48: './assets/icon48.png',
+      128: './assets/icon128.png',
     },
     permissions: ['tabs', 'storage', 'activeTab', 'http://*/', 'https://*/'],
     content_scripts: [
       {
         matches: ['http://*/*', 'https://*/*'],
-        js: ['./dist/contentScripts/index.global.js'],
+        js: ['./dists/contentScripts/index.global.js', './dists/contentScripts/assets/client.c30d29d2.js'],
       },
     ],
-    web_accessible_resources: ['dist/contentScripts/style.css'],
+    web_accessible_resources: ['dists/contentScripts/injected.global.js'],
   }
 
   if (isDev) {

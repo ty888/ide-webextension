@@ -67,7 +67,7 @@ export const sharedConfig: UserConfig = {
 
 export default defineConfig(({ command }) => ({
   ...sharedConfig,
-  base: command === 'serve' ? `http://localhost:${port}/` : '/dist/',
+  base: command === 'serve' ? `http://localhost:${port}/` : '/dists/',
   server: {
     port,
     hmr: {
@@ -75,7 +75,7 @@ export default defineConfig(({ command }) => ({
     },
   },
   build: {
-    outDir: r('extension/dist'),
+    outDir: r('extension/dists'),
     emptyOutDir: false,
     sourcemap: isDev ? 'inline' : false,
     // https://developer.chrome.com/docs/webstore/program_policies/#:~:text=Code%20Readability%20Requirements

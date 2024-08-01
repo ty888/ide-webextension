@@ -15,7 +15,7 @@ export async function stubIndexHtml() {
     : ''
 
   for (const view of views) {
-    await fs.ensureDir(r(`extension/dist/${view}`))
+    await fs.ensureDir(r(`extension/dists/${view}`))
     let data = await fs.readFile(r(`src/${view}/index.html`), 'utf-8')
     data = data
       .replace(
@@ -33,7 +33,7 @@ export async function stubIndexHtml() {
         '<div id="root">Vite server did not start</div>',
       )
 
-    await fs.writeFile(r(`extension/dist/${view}/index.html`), data, 'utf-8')
+    await fs.writeFile(r(`extension/dists/${view}/index.html`), data, 'utf-8')
     log('PRE', `stub ${view}`)
   }
 }

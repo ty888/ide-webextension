@@ -1,7 +1,7 @@
-import { allowWindowMessaging } from 'webext-bridge'
+import React from "react"
 
 const App = () => {
-  allowWindowMessaging('12')
+  console.log('injected', window)
   return (
     <div>
       <div>Vitesse WebExt</div>

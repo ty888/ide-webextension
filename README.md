@@ -75,7 +75,7 @@ yarn
   - `manifest.ts` - manifest for the extension (v2).
 - `extension` - extension package root.
   - `assets` - static assets.
-  - `dist` - built files, also serve stub entry for Vite on development.
+  - `dists` - built files, also serve stub entry for Vite on development.
 - `scripts` - development and bundling helper scripts.
 
 ### Development
