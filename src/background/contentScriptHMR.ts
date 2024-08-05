@@ -11,14 +11,7 @@ browser.webNavigation.onCommitted.addListener(({ tabId, frameId, url }) => {
   // inject the latest scripts
   browser.tabs
     .executeScript(tabId, {
-      file: `${isFirefox ? '' : '.'}/dists/contentScripts/index.global.js`,
-      runAt: 'document_end',
-    })
-    .catch(error => console.error(error))
-
-  browser.tabs
-    .executeScript(tabId, {
-      file: `${isFirefox ? '' : '.'}/dists/contentScripts/assets/*.js`,
+      file: `${isFirefox ? '' : '.'}/dists/contentScripts/index.global.iife.js`,
       runAt: 'document_end',
     })
     .catch(error => console.error(error))

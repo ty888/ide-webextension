@@ -36,10 +36,10 @@ export async function getManifest() {
     content_scripts: [
       {
         matches: ['http://*/*', 'https://*/*'],
-        js: ['./dists/contentScripts/index.global.js', './dists/contentScripts/assets/client.c30d29d2.js'],
+        js: ['./dists/contentScripts/index.global.iife.js'],
       },
     ],
-    web_accessible_resources: ['dists/contentScripts/injected.global.js'],
+    web_accessible_resources: ['injected.global.iife.js'],
   }
 
   if (isDev) {

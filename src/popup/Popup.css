@@ -1,17 +1,36 @@
 .popup{
-  width: 500px;
-  height: 600px;
-  background-color: #f1f3f5;
+  width: 550px;
+  height: 650px;
+  background-color: #fff;
 }
 .popup_header{
   height: 50px;
   display: flex;
   padding: 0 10px;
   align-items: center;
-  background-color: #fff;
+  border-bottom: 1px solid #f1f3f5;
 }
 
 .popup_header > img{
   height: 35px;
   margin-right: 10px;
+}
+
+.popup_header > h3{
+  margin-right: 8px;
+}
+
+.popup_body{
+  background-color: #fff;
+}
+
+/* 非IDE 提示 */
+.noIdeTip{
+  height: 100px;
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 500;
 }

@@ -1,0 +1,26 @@
+.log_page{
+  padding: 12px 12px 12px 12px;
+}
+.log_page_header{
+  margin-bottom: 12px;
+}
+.log_page_content{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.log_page_content_item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  border-radius: 100px;
+  margin: 4px;
+  box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08),
+  0 3px 6px -4px rgba(0, 0, 0, 0.12),
+  0 9px 28px 8px rgba(0, 0, 0, 0.05);
+}
+
+.log_page_content_item_title{
+  margin-right: 8px;
+}
