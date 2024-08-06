@@ -10,6 +10,11 @@ function isCDNJSFile(url: string): boolean {
   return hasSunmiDomain && (endsWithJS || endsWithCJS);
 }
 
+function isIDEWeb(url: string): boolean {
+  const regex = /^(https?:\/\/)?(?:ide|local\.dev)\.(\w+\.)?sunmi\.com\/.*$/;
+  return regex.test(url)
+}
+
 
 function returnEnv(url: string): string {
   if(url?.includes('ide.dev.sunmi.com')) {
@@ -33,5 +38,6 @@ function returnEnv(url: string): string {
 
 export {
   isCDNJSFile,
-  returnEnv
+  returnEnv,
+  isIDEWeb
 }

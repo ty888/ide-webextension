@@ -1,1 +1,71 @@
-.quickNav{}
+.quickNav {
+  padding: 0 12px;
+}
+
+.quickNav_content {
+  margin-bottom: 16px;
+}
+
+.quickNav_content_title {
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.quickNav_content_title {
+  display: flex;
+}
+
+.quickNav_content_item {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.quickNav_content_item_btn{
+  position: relative;
+}
+
+.quickNav_content_item_btn>span {
+  padding: 8px;
+  font-size: 12px;
+  transition: all .2s;
+  border-radius: 4px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  color: #1677ff;
+  box-shadow: 0 6px 10px 0 rgba(95, 101, 105, 0.15);
+}
+
+.quickNav_content_item_btn>span:hover {
+  box-shadow: 0 12px 20px 0 rgba(95, 101, 105, 0.15);
+  color: #1677ff;
+}
+
+.quickNav_content_item_btn_delete {
+  position: absolute;
+  top: -9px;
+  right: -5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 100px;
+  cursor: pointer;
+  background-color: #f1f3f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  color: #666;
+  transition: all .3s;
+  border: 1px solid transparent
+}
+
+.quickNav_content_item_btn_delete:hover{
+  color: #000;
+}
+
+.quickNav_header {
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: right;
+}

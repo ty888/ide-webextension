@@ -5,6 +5,7 @@ import { Button, Modal, Result, Switch, Tabs, TabsProps } from 'antd'
 import { IlogType } from '@/type'
 import './index.css'
 import LoadSource from './components/loadSource'
+import GetInfo from './components/getInfo'
 
 export interface PlatProps {
   tab: any
@@ -21,10 +22,17 @@ const Plat: React.FC<PlatProps> = (props) => {
 
   return (
     <div className='plat_page'>
-      <div className='plat_page_item_title'>能力集合</div>
+      <div className='plat_page_item_title'>资源能力</div>
       <div className='plat_page_content'>
         <div className='plat_page_item'>
           <LoadSource tab={tab} />
+        </div>
+      </div>
+
+      <div className='plat_page_item_title'>信息获取</div>
+      <div className='plat_page_content'>
+        <div className='plat_page_item'>
+          <GetInfo tab={tab} />
         </div>
       </div>
     </div>

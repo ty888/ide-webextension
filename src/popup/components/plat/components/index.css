@@ -1,4 +1,4 @@
-/* 加载资源 */
+/* 加载资源 - loadSource */
 .loadSource{
 }
 .loadSource_content{
@@ -9,4 +9,11 @@
     margin-right: 8px;
     margin-bottom: 12px;
   }
+}
+
+/* 信息获取 - getInfo */
+
+.getInfo_page_content button{
+  margin-right: 8px;
+  margin-bottom: 8px;
 }

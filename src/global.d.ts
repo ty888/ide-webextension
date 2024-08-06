@@ -5,4 +5,5 @@ interface Window {
   log: any;
   idePlugin: any
   maxTools: any
+  idePlugin: any
 }

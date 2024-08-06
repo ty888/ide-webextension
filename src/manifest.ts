@@ -32,10 +32,10 @@ export async function getManifest() {
       48: './assets/icon48.png',
       128: './assets/icon128.png',
     },
-    permissions: ['tabs', 'storage', 'activeTab', 'http://*/', 'https://*/'],
+    permissions: ['tabs', 'storage', 'activeTab', "http://*.sunmi.com/*", "https://*.sunmi.com/*"],
     content_scripts: [
       {
-        matches: ['http://*/*', 'https://*/*'],
+        matches: ["http://*.sunmi.com/*", "https://*.sunmi.com/*"],
         js: ['./dists/contentScripts/index.global.iife.js'],
       },
     ],

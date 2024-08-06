@@ -17,7 +17,7 @@ declare module 'webext-bridge' {
 
     // 通用执行消息
     'run': {
-      type: 'loadResources',
+      type: 'loadResources' | 'getInfo',
       data: any
     }
   }

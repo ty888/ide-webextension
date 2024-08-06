@@ -1,3 +1,4 @@
+import { isIDEWeb } from '@/utils'
 import { sendMessage, onMessage } from 'webext-bridge/background'
 import type { Tabs } from 'webextension-polyfill'
 
@@ -14,29 +15,29 @@ browser.runtime.onInstalled.addListener((): void => {
   console.log('Extension installed')
 })
 
-let previousTabId = 0
 
 // communication example: send previous tab title from background page
 // see shim.d.ts for type declaration
 browser.tabs.onActivated.addListener(async ({ tabId }) => {
-  if (!previousTabId) {
-    previousTabId = tabId
-    return
-  }
 
   let tab: Tabs.Tab
 
   try {
-    tab = await browser.tabs.get(previousTabId)
-    previousTabId = tabId
+    tab = await browser.tabs.get(tabId)
   } catch {
     return
   }
 
-  // onMessage('')
+  if (!isIDEWeb(tab?.url || '')) {
+    const res = await browser.browserAction.disable(tabId)
+    console.log('res', res)
+    browser.browserAction.setIcon({
+      tabId: tabId,
+      path: browser.runtime.getURL(`assets/disable_icon_128.png`)
+    });
 
-  // eslint-disable-next-line no-console
-  console.log('previous tab', tab)
+  }
+
   sendMessage(
     'tab-prev',
     { title: tab.title },
