@@ -54,8 +54,8 @@ const App = () => {
         // 当前页面信息
         if (data.data.value === 'currentPageInfo') {
           const resourceId = platform.getPlatform().get('ide')?.activeInfo?.resourceId
-          if (resourceId) {
-            console.log('【currentPageInfo】 --> ', resources.findById('node', resourceId))
+          if (window?.plugins?.get("resources")) {
+            console.log('【currentPageInfo】 --> ', window?.plugins?.get("resources").findById('node', resourceId))
           } else {
             console.log('【currentPageInfo】 --> ', '未获取到resourceId')
           }
