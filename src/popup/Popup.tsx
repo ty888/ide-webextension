@@ -6,7 +6,7 @@ import { createClient } from "@supabase/supabase-js";
 import './Popup.css'
 import Log from './components/log'
 import Plat from './components/plat'
-import { returnEnv } from '@/utils'
+import { isIDEWeb, returnEnv } from '@/utils'
 import QuickNav from './components/quickNav'
 import { IquickNav } from '@/type';
 
@@ -18,6 +18,7 @@ const Popup = () => {
 
   const [quickNav, setQuickNav] = useState<IquickNav[]>([])
   const [quickNavLoading, setQuickNavLoading] = useState(false)
+  const [activeKey, setActiveKey] = useState<string>('plat')
 
 
   const getCurrentTab = async () => {
@@ -25,6 +26,7 @@ const Popup = () => {
       active: true,
       currentWindow: true
     });
+    setActiveKey(isIDEWeb(tab?.url || '') ? 'plat' : 'quickNav')
     setTab({ ...tab })
     return tab
   }
@@ -43,20 +45,21 @@ const Popup = () => {
   }
 
   useEffect(() => {
-    const init = async () => {
-      const tab = await getCurrentTab()
-      if (!tab.url?.includes('sunmi.com')) {
-        setIsIde(false)
-      }
-    }
-    init()
+    // const init = async () => {
+    //   const tab = await getCurrentTab()
+    //   if (!isIDEWeb(tab.url || '')) {
+    //     setIsIde(false)
+    //   }
+    // }
+    // init()
+    getCurrentTab()
     getCountries()
   }, [])
 
   const tabItems: TabsProps['items'] = [
-    { key: 'plat', label: '平台开发', children: <Plat tab={tab} /> },
+    { key: 'plat', label: '平台开发', disabled: !isIDEWeb(tab?.url || ''), children: <Plat tab={tab} /> },
     // { key: 'business', label: '业务开发', children: 'Content of Tab Pane 2' },
-    { key: 'log', label: '日志控制', children: <Log tab={tab} /> },
+    { key: 'log', label: '日志控制', disabled: !isIDEWeb(tab?.url || ''), children: <Log tab={tab} /> },
     // { key: 'utils', label: '工具能力', children: 'Content of Tab Pane 3' },
     { key: 'quickNav', label: '快捷导航', children: <QuickNav loading={quickNavLoading} data={quickNav} /> },
   ];
@@ -71,10 +74,10 @@ const Popup = () => {
           </header>
           <section className='popup_body'>
             <Tabs
-              defaultActiveKey="plat"
+              activeKey={activeKey}
               centered
               items={tabItems}
-              onChange={(v) => { }}
+              onChange={setActiveKey}
               indicator={{ size: (origin) => origin - 20, align: 'center' }}
             />
           </section>

@@ -11,8 +11,8 @@ function isCDNJSFile(url: string): boolean {
 }
 
 function isIDEWeb(url: string): boolean {
-  const regex = /^(https?:\/\/)?(?:ide|local\.dev)\.(\w+\.)?sunmi\.com\/.*$/;
-  return regex.test(url)
+  const regex = /^(https?:\/\/)?(?:ide|local\.dev)\.(\w+\.)?sunmi\.com(:\d+)?\/?.*$/;
+  return regex.test(url);
 }
 
 
@@ -33,7 +33,7 @@ function returnEnv(url: string): string {
     return '线上环境'
   }
   
-  return '本地开发环境'
+  return '非IDE正式环境'
 }
 
 export {

@@ -28,15 +28,15 @@ browser.tabs.onActivated.addListener(async ({ tabId }) => {
     return
   }
 
-  if (!isIDEWeb(tab?.url || '')) {
-    const res = await browser.browserAction.disable(tabId)
-    console.log('res', res)
-    browser.browserAction.setIcon({
-      tabId: tabId,
-      path: browser.runtime.getURL(`assets/disable_icon_128.png`)
-    });
+  // if (!isIDEWeb(tab?.url || '')) {
+  //   const res = await browser.browserAction.disable(tabId)
+  //   console.log('res', res)
+  //   browser.browserAction.setIcon({
+  //     tabId: tabId,
+  //     path: browser.runtime.getURL(`assets/disable_icon_128.png`)
+  //   });
 
-  }
+  // }
 
   sendMessage(
     'tab-prev',
