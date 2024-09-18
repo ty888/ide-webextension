@@ -1,3 +1,8 @@
+/**
+ * 判断是否是插件CDN
+ * @param url 插件CDN
+ * @returns boolean
+ */
 function isCDNJSFile(url: string): boolean {
   // 判断地址中是否包含 sunmi.com
   const hasSunmiDomain = url.includes('sunmi.com');
@@ -10,8 +15,13 @@ function isCDNJSFile(url: string): boolean {
   return hasSunmiDomain && (endsWithJS || endsWithCJS);
 }
 
+/**
+ * 判断是否是IDE环境
+ * @param url 页面URL
+ * @returns boolean
+ */
 function isIDEWeb(url: string): boolean {
-  const regex = /^(https?:\/\/)?(?:ide|local\.dev)\.(\w+\.)?sunmi\.com(:\d+)?\/?.*$/;
+  const regex = /^(https?:\/\/)?(?:ide|local\.dev)\.(\w+\.)?(?:sunmi|maxiot)\.com(:\d+)?\/?.*$/;
   return regex.test(url);
 }
 
