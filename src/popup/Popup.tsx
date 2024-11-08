@@ -18,7 +18,7 @@ const Popup = () => {
 
   const [quickNav, setQuickNav] = useState<IquickNav[]>([])
   const [quickNavLoading, setQuickNavLoading] = useState(false)
-  const [activeKey, setActiveKey] = useState<string>('plat')
+  const [activeKey, setActiveKey] = useState<string>('log')
 
 
   const getCurrentTab = async () => {
@@ -26,7 +26,7 @@ const Popup = () => {
       active: true,
       currentWindow: true
     });
-    setActiveKey(isIDEWeb(tab?.url || '') ? 'plat' : 'quickNav')
+    setActiveKey(isIDEWeb(tab?.url || '') ? 'log' : 'quickNav')
     setTab({ ...tab })
     return tab
   }
@@ -57,9 +57,9 @@ const Popup = () => {
   }, [])
 
   const tabItems: TabsProps['items'] = [
+    { key: 'log', label: '日志控制', disabled: !isIDEWeb(tab?.url || ''), children: <Log tab={tab} /> },
     { key: 'plat', label: '平台开发', disabled: !isIDEWeb(tab?.url || ''), children: <Plat tab={tab} /> },
     // { key: 'business', label: '业务开发', children: 'Content of Tab Pane 2' },
-    { key: 'log', label: '日志控制', disabled: !isIDEWeb(tab?.url || ''), children: <Log tab={tab} /> },
     // { key: 'utils', label: '工具能力', children: 'Content of Tab Pane 3' },
     { key: 'quickNav', label: '快捷导航', children: <QuickNav loading={quickNavLoading} data={quickNav} /> },
   ];
