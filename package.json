@@ -3,7 +3,6 @@
   "displayName": "ide-webextension",
   "version": "0.0.1",
   "description": "帮助 IDE平台开发、业务开发、工具集",
-  "packageManager": "yarn@3.2.0",
   "private": true,
   "scripts": {
     "dev": "npm run clear && cross-env NODE_ENV=development run-p 'dev:*'",

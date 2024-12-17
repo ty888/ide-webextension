@@ -21,25 +21,25 @@ function isCDNJSFile(url: string): boolean {
  * @returns boolean
  */
 function isIDEWeb(url: string): boolean {
-  const regex = /^(https?:\/\/)?(?:ide|local\.dev)\.(\w+\.)?(?:sunmi|maxiot)\.com(:\d+)?\/?.*$/;
+  const regex = /^(https?:\/\/)?(?:ide|local)\.(\w+\.)?(?:sunmi|maxiot)\.com(:\d+)?\/?.*$/;
   return regex.test(url);
 }
 
 
 function returnEnv(url: string): string {
-  if(url?.includes('ide.dev.sunmi.com')) {
+  if(url?.includes('ide.dev.maxiot.com')) {
     return '开发环境'
   }
 
-  if(url?.includes('ide.test.sunmi.com')) {
+  if(url?.includes('ide.test.maxiot.com')) {
     return '测试环境'
   }
 
-  if(url?.includes('ide.pre.sunmi.com')) {
+  if(url?.includes('ide.pre.maxiot.com')) {
     return '预发环境'
   }
 
-  if(url?.includes('ide.sunmi.com')) {
+  if(url?.includes('ide.maxiot.com')) {
     return '线上环境'
   }
   
