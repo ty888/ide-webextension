@@ -8,7 +8,7 @@ import Log from './components/log'
 import Plat from './components/plat'
 import { isIDEWeb, returnEnv } from '@/utils'
 import QuickNav from './components/quickNav'
-import { IquickNav } from '@/type';
+import { IpluginList, IquickNav } from '@/type';
 
 const supabase = createClient("https://ccpvakrsvkswtmcxidbz.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNjcHZha3Jzdmtzd3RtY3hpZGJ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjI4NTE1MDMsImV4cCI6MjAzODQyNzUwM30.mVqjLZS4Yi64EguhiztSgp1VcsYVVclod4Q0f7ueoVE");
 
@@ -17,6 +17,7 @@ const Popup = () => {
   const [isIde, setIsIde] = useState(true)
 
   const [quickNav, setQuickNav] = useState<IquickNav[]>([])
+  const [pluginList, setPluginList] = useState<IpluginList[]>([])
   const [quickNavLoading, setQuickNavLoading] = useState(false)
   const [activeKey, setActiveKey] = useState<string>('log')
 
@@ -44,21 +45,25 @@ const Popup = () => {
     setQuickNav(data || [])
   }
 
+  async function getPluginList() {
+    const { data, error } = await supabase.from('plugin-list').select()
+    if (error) {
+      message.error('获取快捷导航失败。' + error.message)
+      console.log(error)
+      return
+    }
+    setPluginList(data)
+  }
+
   useEffect(() => {
-    // const init = async () => {
-    //   const tab = await getCurrentTab()
-    //   if (!isIDEWeb(tab.url || '')) {
-    //     setIsIde(false)
-    //   }
-    // }
-    // init()
     getCurrentTab()
     getCountries()
+    getPluginList()
   }, [])
 
   const tabItems: TabsProps['items'] = [
     { key: 'log', label: '日志控制', disabled: !isIDEWeb(tab?.url || ''), children: <Log tab={tab} /> },
-    { key: 'plat', label: '平台开发', disabled: !isIDEWeb(tab?.url || ''), children: <Plat tab={tab} /> },
+    { key: 'plat', label: '平台开发', disabled: !isIDEWeb(tab?.url || ''), children: <Plat tab={tab} pluginList={pluginList} /> },
     // { key: 'business', label: '业务开发', children: 'Content of Tab Pane 2' },
     // { key: 'utils', label: '工具能力', children: 'Content of Tab Pane 3' },
     { key: 'quickNav', label: '快捷导航', children: <QuickNav loading={quickNavLoading} data={quickNav} /> },

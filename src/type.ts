@@ -8,3 +8,10 @@ export interface IquickNav {
     url: string
   }[]
 }
+
+export interface IpluginList {
+  link: string,
+  title: string
+  id: number,
+  created_at: string
+}

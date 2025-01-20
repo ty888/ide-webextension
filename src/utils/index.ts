@@ -6,13 +6,14 @@
 function isCDNJSFile(url: string): boolean {
   // 判断地址中是否包含 sunmi.com
   const hasSunmiDomain = url.includes('sunmi.com');
+  const hasMaxiotDomain = url.includes('maxiot.com');
 
   // 判断地址是否以 .js 或 .cjs 结尾
   const endsWithJS = url.endsWith('.js');
   const endsWithCJS = url.endsWith('.cjs');
 
   // 返回是否满足条件
-  return hasSunmiDomain && (endsWithJS || endsWithCJS);
+  return (hasMaxiotDomain || hasSunmiDomain) && (endsWithJS || endsWithCJS);
 }
 
 /**

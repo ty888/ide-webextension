@@ -3,20 +3,23 @@ import { sendMessage, onMessage } from 'webext-bridge/popup'
 import { Button, Input, message, Modal, Tooltip } from 'antd'
 import './index.css'
 import { isCDNJSFile } from '@/utils'
+import { IpluginList } from '@/type'
 
 export interface PlatProps {
   tab: any
+  pluginList: IpluginList[]
 }
 
 const LoadSource: React.FC<PlatProps> = (props) => {
-  const { tab } = props
+  const { tab, pluginList } = props
   const [visible, setVisible] = useState(false)
   const [resourcesAddress, setResourcesAddress] = useState('')
+  const [resourcesList, setResourcesList] = useState<IpluginList[]>(pluginList)
 
-  const resourcesList = [
-    { title: '血缘清洗', value: 'https://static.cdn.sunmi.com/unpkg/@sm/plugin-ide-trigger-save/0.0.1-beta3/dist/index.umd.production.js' },
-    { title: '清洗工程外转工程内', value: 'https://static.cdn.sunmi.com/unpkg/@sm/plugin-ide-schema-wash/1.0.0-beta1/dist/index.umd.production.js' }
-  ]
+  useEffect(() => {
+    setResourcesList(pluginList)
+  }, [pluginList])
+
   const onOk = async () => {
     if (isCDNJSFile(resourcesAddress)) {
       await sendMessage("run", {
@@ -54,8 +57,8 @@ const LoadSource: React.FC<PlatProps> = (props) => {
           <div className="loadSource_btn">
             {
               resourcesList?.map(item => {
-                return <Button size='small' key={item.value} type='primary' onClick={() => {
-                  setResourcesAddress(item.value)
+                return <Button size='small' key={item.id} type='primary' onClick={() => {
+                  setResourcesAddress(item.link)
                 }}>{item.title}</Button>
               })
             }
